@@ -59,11 +59,11 @@ public class AllHardware {
         linear.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         linear.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 */
-        IMU imu = hwMap.get(IMU.class, "imu");
+        imu = hwMap.get(IMU.class, "imu");
         // Adjust the orientation parameters to match your robot
         IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
                 RevHubOrientationOnRobot.LogoFacingDirection.UP,
-                RevHubOrientationOnRobot.UsbFacingDirection.FORWARD));
+                RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD));
         imu.initialize(parameters);
 
         myOpMode.telemetry.addData(">", "Hardware Initialized");

@@ -44,8 +44,8 @@ public class StudedWheels extends LinearOpMode {
 
             double botHeading = robot.imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
 
-            double y = -gamepad1.left_stick_y; // Remember, Y stick value is reversed
-            double x = gamepad1.left_stick_x;
+            double y = gamepad1.left_stick_y; // Remember, Y stick value is reversed
+            double x = - gamepad1.left_stick_x;
             // Rotate the movement direction with the bot rotation
             double rotX = x * Math.cos(-botHeading) - y * Math.sin(-botHeading);
             double rotY = x * Math.sin(-botHeading) + y * Math.cos(-botHeading);
@@ -53,10 +53,10 @@ public class StudedWheels extends LinearOpMode {
             double max;
             double yaw = gamepad1.right_stick_x;
 
-            double leftFrontPower = rotY + rotX + yaw;
-            double rightFrontPower = rotY - rotX - yaw;
-            double leftBackPower = rotY - rotX + yaw;
-            double rightBackPower = rotY + rotX - yaw;
+            double leftFrontPower = rotY + rotX - yaw;
+            double rightFrontPower = rotY - rotX + yaw;
+            double leftBackPower = rotY - rotX - yaw;
+            double rightBackPower = rotY + rotX + yaw;
 
             max = Math.max(Math.abs(leftFrontPower), Math.abs(rightFrontPower));
             max = Math.max(max, Math.abs(leftBackPower));
